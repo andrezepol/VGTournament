@@ -45,7 +45,6 @@ jobs:
         run: |
           echo "Testing Bucket: ${{ env.TESTING_ARTIFACTS_BUCKET }}"
           echo "Prod Bucket: ${{ env.PROD_ARTIFACTS_BUCKET }}"
-
       
   delete-feature:
     if: startsWith(github.event.ref, 'feature') && github.event_name == 'delete'
@@ -104,7 +103,7 @@ jobs:
           sam deploy --stack-name $(echo ${GITHUB_REF##*/} | tr -cd '[a-zA-Z0-9-]') \
             --capabilities CAPABILITY_IAM \
             --region ${TESTING_REGION} \
-            --s3-bucket aws-sam-cli-managed-dev-pipeline-r-artifactsbucket-8d0unwublegd \
+            --s3-bucket ${TESTING_ARTIFACTS_BUCKET} \
             --no-fail-on-empty-changeset \
             --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE}
 
@@ -133,7 +132,7 @@ jobs:
       - name: Upload artifacts to testing artifact buckets
         run: |
           sam package \
-            --s3-bucket aws-sam-cli-managed-dev-pipeline-r-artifactsbucket-8d0unwublegd \
+            --s3-bucket ${TESTING_ARTIFACTS_BUCKET} \
             --region ${TESTING_REGION} \
             --output-template-file packaged-testing.yaml
 
