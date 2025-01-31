@@ -92,7 +92,13 @@ jobs:
           role-session-name: feature-deployment
           role-duration-seconds: 3600
           role-skip-session-tagging: true
+      
+      - name: Debug Environment Variables
+        run: |
+          echo "Testing Bucket: ${{ env.TESTING_ARTIFACTS_BUCKET }}"
+          echo "Prod Bucket: ${{ env.PROD_ARTIFACTS_BUCKET }}"
 
+      
       - name: Deploy to feature stack in the testing account
         shell: bash
         run: |
