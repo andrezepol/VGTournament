@@ -17,6 +17,16 @@ env:
   # TESTING_IMAGE_REPOSITORY = '0123456789.dkr.ecr.region.amazonaws.com/repository-name'
   TESTING_REGION: us-east-1
 
+  PROD_STACK_NAME: sam-app-pdn
+  PROD_PIPELINE_EXECUTION_ROLE: arn:aws:iam::730335186232:role/aws-sam-cli-managed-pdn-pipel-PipelineExecutionRole-KALtWjkr6qSo
+  PROD_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::730335186232:role/aws-sam-cli-managed-pdn-p-CloudFormationExecutionRo-nvu2HK8G1BID
+  PROD_ARTIFACTS_BUCKET: aws-sam-cli-managed-pdn-pipeline-r-artifactsbucket-nacyuo8uyphl
+  # If there are functions with "Image" PackageType in your template,
+  # uncomment the line below and add "--image-repository ${PROD_IMAGE_REPOSITORY}" to
+  # prod "sam package" and "sam deploy" commands.
+  # PROD_IMAGE_REPOSITORY = '0123456789.dkr.ecr.region.amazonaws.com/repository-name'
+  PROD_REGION: us-east-1
+
 permissions:
   id-token: write
   contents: read
