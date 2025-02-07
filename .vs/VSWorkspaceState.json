@@ -2,11 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\events",
-    "\\hello_world",
+    "\\users\\getUsers",
     "\\tests",
     "\\tests\\integration",
     "\\tests\\unit"
   ],
-  "SelectedNode": "\\hello_world\\app.py",
+  "SelectedNode": "\\users\\app.py",
   "PreviewInSolutionExplorer": false
 }
